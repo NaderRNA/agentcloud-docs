@@ -18,7 +18,7 @@
   "topbarLinks": [
     {
       "name": "Sales",
-      "url": "mailto:sales@agentcloud.dev"
+      "url": "https://www.agentcloud.dev/contact"
     }
   ],
   "topbarCtaButton": {
@@ -86,6 +86,6 @@
   "footerSocials": {
     "twitter": "https://twitter.com/agentcloud_dev",
     "github": "https://github.com/rnadigital/agentcloud",
-    "linkedin": "https://www.linkedin.com/products/rna-digital-agent-cloud/"
+    "linkedin": "https://www.linkedin.com/company/mintsearch"
   }
 }
