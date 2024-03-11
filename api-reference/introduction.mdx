@@ -1,33 +1,37 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+description: 'Agent Cloud Platform API Endpoints'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+<Warning>
+  🚧 Agent Cloud API is still under construction. For now the best way to do anything is still via the GUI. Reach out on [Discord](https://discord.com/invite/ZNSSttKqqq) if you're interested to contribute the API to the repo.
+</Warning>
 
 ## Welcome
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+The Agent Cloud API (under construction) enables users to programatically interact with the app. 
+This is intended to work on every component of the app enabling CRUD over: 
+* Apps
+* Agents
+* Tools
+* Tasks
+* Models
+* Credentials
+* Users
+* Workspace
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+To get started, you need to have a developer token. To generate a token
+<Steps>
+  <Step title="Login">
+    Login to the platform at https://app.agentcloud.dev/login 
+  </Step>
+  <Step title="Click on Developer">
+    Click on the Developer tab (if this is available for your permission)
+  </Step>
+  <Step title="Generate">
+    Click generate which will reveal a secret key which you can copy and use in your code.
+  </Step>
+</Steps>
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
