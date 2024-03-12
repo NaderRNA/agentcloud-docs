@@ -29,13 +29,17 @@
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+    {
+      "name": "Integrations",
+      "url": "https://agentcloud.dev/integrations"
     }
   ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://docs.agentcloud.dev"
+      "name": "Homepage",
+      "icon": "house",
+      "url": "https://agentcloud.dev"
     },
     {
       "name": "Community",
@@ -58,24 +62,13 @@
       ]
     },
     {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
       "group": "API Documentation",
       "pages": [
         "api-reference/introduction"
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Endpoints [TODO]",
       "pages": [
         "api-reference/endpoint/get",
         "api-reference/endpoint/create",
