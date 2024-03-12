@@ -22,8 +22,8 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Platform",
-    "url": "https://app.agentcloud.dev"
+    "name": "Try Cloud Edition",
+    "url": "https://app.agentcloud.dev/register"
   },
   "tabs": [
     {
