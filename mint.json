@@ -56,9 +56,9 @@
     {
       "group": "Get Started",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "documentation/get-started/introduction",
+        "documentation/get-started/quickstart",
+        "documentation/get-started/development"
       ]
     },
     {
@@ -68,7 +68,7 @@
       ]
     },
     {
-      "group": "Endpoints [TODO]",
+      "group": "Endpoint Examples",
       "pages": [
         "api-reference/endpoint/get",
         "api-reference/endpoint/create",
