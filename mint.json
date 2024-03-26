@@ -37,14 +37,19 @@
   ],
   "anchors": [
     {
-      "name": "Homepage",
+      "name": "Product page",
       "icon": "house",
       "url": "https://agentcloud.dev"
     },
     {
-      "name": "Community",
+      "name": "Join Community",
       "icon": "discord",
       "url": "https://discord.com/invite/ZNSSttKqqq"
+    },
+    {
+      "name": "Github",
+      "icon": "github",
+      "url": "https://github.com.rnadigital/agentcloud"
     },
     {
       "name": "Blog",
