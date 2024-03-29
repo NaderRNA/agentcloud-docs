@@ -1,6 +1,6 @@
 ---
-title: 'Run Locally'
-description: 'Get Agent Cloud running locally'
+title: "Run Locally"
+description: "Get Agent Cloud running locally"
 ---
 
 ## Setup via Docker
@@ -13,14 +13,15 @@ Learn how to get Agent Cloud running locally via Docker.
     Make sure to ```cd``` into that directory.
 
     ```git clone https://github.com/rnadigital/agentcloud.git```
+
   </Accordion>
   <Accordion icon="rectangle-terminal" title="2. install.sh">
-    </Warning>
-    For now there is a reliance on GCP for Bucket storage to store files. 
+    <Warning>
+    For now there is a reliance on GCP for Bucket storage to store files.
     (We will add AWS S3 and Local Disk storage in future releases.)
     </Warning>
-    
-    Follow the steps below to get started:  
+
+    Follow the steps below to get started:
     Once you are in the directory of the repo for Mac & Linux users run:
     ```
     chmod +x install.sh && ./install.sh
@@ -44,19 +45,19 @@ Learn how to get Agent Cloud running locally via Docker.
     ```
     ./install.sh --project-id [INSERT PROJECT ID HERE] --service-account-json [GENERATE A SERVICE ACCOUNT IN GCP AND INSERT LOCAL PATH TO KEYFILE JSON PATH] --gcs-bucket-name [INSERT A GCP BUCKET NAME] --gcs-bucket-location [INSERT A GCP LOCATION E.G. US-CENTRAL1] --openai-api-key [INSERT KEY SK-.......]
     ```
+
   </Accordion>
-  </Accordion
-    title="Go to localhost:3000"
-  >
+  <Accordion icon="desktop" title="3. Go to localhost:3000">
   Once all the Docker containers are running, enter your browser and go to http://localhost:3000.
   You will see the following page where you can enter your sign in details.
   ![Sign Up](/images/signup-page.png)
-  
-  After signup you will be redirected to a sign in page where you can enter the same credentials you just used to sign up to enter the platform.
-  </Accordion>
+
+After signup you will be redirected to a sign in page where you can enter the same credentials you just used to sign up to enter the platform.
+</Accordion>
 </AccordionGroup>
 
 ### Managed version
+
 We're currently building a waitlist for the cloud edition if you're interested in a managed version [let us know here](https://www.agentcloud.dev/join-cloud-waitlist)
 
 ### Troubleshooting
