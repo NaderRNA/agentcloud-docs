@@ -8,17 +8,23 @@ description: "Get Agent Cloud running locally"
 Learn how to get Agent Cloud running locally via Docker.
 
 <AccordionGroup>
-  <Accordion icon="github" title="1. Clone the repository locally">
+  <Accordion icon="github" title="Clone the repository locally">
     Open your terminal and clone the repo to your a local folder using the command below.
     Make sure to ```cd``` into that directory.
 
     ```git clone https://github.com/rnadigital/agentcloud.git```
 
   </Accordion>
-  <Accordion icon="rectangle-terminal" title="2. install.sh">
+
+  <Accordion icon="docker" title="Run Docker Desktop">
+  If you don't have docker desktop you can
+  [download it here](https://www.docker.com/products/docker-desktop/)
+  </Accordion>
+
+  <Accordion icon="rectangle-terminal" title="Run install.sh in terminal">
     <Warning>
-    For now there is a reliance on GCP for Bucket storage to store files.
-    (We will add AWS S3 and Local Disk storage in future releases.)
+    For now there is a reliance on GCP for Bucket storage to store files for RAG. Make sure you have your GCP Project ID ready and you have downloaded a service account keyfile.json with a with ```Storage Admin``` role to your machine [(instructions here).](https://cloud.google.com/iam/docs/keys-create-delete)
+    We will add AWS S3 and Local Disk storage in future releases so that we can remove the dependancy on GCP on install.
     </Warning>
 
     Follow the steps below to get started:
@@ -47,7 +53,7 @@ Learn how to get Agent Cloud running locally via Docker.
     ```
 
   </Accordion>
-  <Accordion icon="desktop" title="3. Go to localhost:3000">
+  <Accordion icon="desktop" title="Go to localhost:3000">
   Once all the Docker containers are running, enter your browser and go to http://localhost:3000.
   You will see the following page where you can enter your sign in details.
   ![Sign Up](/images/signup-page.png)
