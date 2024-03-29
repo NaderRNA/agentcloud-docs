@@ -22,8 +22,8 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Try Cloud Edition",
-    "url": "https://app.agentcloud.dev/register"
+    "name": "Join Cloud Waitlist",
+    "url": "https://www.agentcloud.dev/join-cloud-waitlist"
   },
   "tabs": [
     {
@@ -68,9 +68,7 @@
     },
     {
       "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
+      "pages": ["api-reference/introduction"]
     },
     {
       "group": "Endpoint Examples",

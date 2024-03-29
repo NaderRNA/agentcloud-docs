@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: 'Welcome to Agent Cloud Documentation'
+description: "Welcome to Agent Cloud Documentation"
 ---
 
 <img
@@ -15,40 +15,45 @@ description: 'Welcome to Agent Cloud Documentation'
 />
 
 ## What is Agent Cloud?
+
 Agent Cloud enables companies to host their own AI App platform. (imagine a self hosted GPT builder platform with extra goodies!)
 
 There are two types of apps companies can build and deploy to their employees:
-| App Type | Description                           |
+| App Type | Description |
 | -------- | ------------------------------------- |
 | Conversational Chat Apps | These are similar to Open AI GPTs enabling you to build single agent chat apps except they can use any LLM, can access a library of tools as well as retrieve knowledge from hundreds of data sources. |
-| Process Apps             | These enable you to automate processes by allocating goals and tasks for agents to complete. |
+| Process Apps | These enable you to automate processes by allocating goals and tasks for agents to complete. |
 
 These are the high level conepts in the app:
 <img style={{height: "400px"}} src="/images/concepts1.svg" />
 
 ## Infrastructure that powers these chat apps
+
 In order to build an end to end scalable platform that empowers companies to deploy fully private LLM chat apps for their employees,
 the application must be self hostable and able to use open source embeddings and LLMs.
 To mitigate hallucination, companies also need scalable RAG.
-So we decided to power the end-to-end creation of these two apps. 
+So we decided to power the end-to-end creation of these two apps.
 
 This includes:
+
 1. RAG as a Service which comes which enables you to sync and embed data from hundreds of data sources with a built in vector DB.
-To accomplish this we have abrstacted away both Airbyte (ELT) and Qdrant (Vector DB)
-![End to End RAG-a-a-S](/images/our-stack.jpg)
+   To accomplish this we have abrstacted away both Airbyte (ELT) and Qdrant (Vector DB)
+   ![End to End RAG-a-a-S](/images/our-stack.jpg)
 2. Multi agent engine which enables you to create tasks and assign them to a group of agents.
-To accomplish this we have abrstacted a langchain based multi agent runtime called crewai.
-![Augmented Human/AI teams](/images/cs_agent1.png)
+   To accomplish this we have abrstacted a langchain based multi agent runtime called crewai.
+   ![Augmented Human/AI teams](/images/cs_agent1.png)
 
 ![Augmented Human/AI tasks](/images/cs_agent2.png)
 
 ### Imagine having your own Open AI GPT builder platform
+
 Except with 4 key differences:
+
 1. Self host it on your companies cloud (keeping your data secure) - for open source users only
 2. Connect to any LLM (Ollama, LM Studio, Open AI, Azure Open AI - with more coming)
 3. Create RAG chat apps that retrieve knowledge from than just files, and can sync data from [hundreds of datasources](https://agentcloud.dev/integrations)
 4. Create multi agent apps that can help you automate manual processes
 
-## For Agent Cloud Managed Users
+### Managed version
 
-To sign up to our managed version of Agent Cloud [head over here](https://app.agentcloud.dev/register)
+We're currently building a waitlist for the cloud edition if you're interested in a managed version [let us know here](https://www.agentcloud.dev/join-cloud-waitlist)
