@@ -4,8 +4,7 @@ description: "Step by step guide to setup a conversational chat app to RAG a Goo
 ---
 
 This is the full explainer, supplementing the Bigquery Demo Video below.
-The video does not show how the models, tasks, agent and app are setup to get the RAG chat app working. 
-So this guide will go in depth.
+This guide will show how to setup models, credentials, tasks, agents and apps to get the RAG chat app working. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/POLdnrjsy9c?si=367PvQnnNYpj3xSw&amp;start=115" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -31,7 +30,11 @@ Go to the `/models` screen and add two models:
 
 ## 2. Setup Datasource
 
-<Tip>If running locally via Docker, during this process we reccommend running `docker compose logs -f` in your terminal to follow along and catch any errors if they occur. For in Advanced debugging you can also open up apps like Qdrant or Airbyte to see progress as data passes through each system. Click Advanced Debugging for instructions on how to access these UIs.</Tip>
+<Tip>
+	If running locally via Docker, during this process we reccommend running `docker compose logs -f` in your terminal to follow along and catch any errors if they occur. 
+	For Advanced debugging you can also open up apps like Qdrant or Airbyte to see progress as data passes through each system. 
+	Click Advanced Debugging for instructions on how to access these UIs.
+</Tip>
 <AccordionGroup>
 <Accordion icon="bug" title="Advanced Debugging">
 If you want to debug the applications running under the hood, you can access them via the following addresses:
