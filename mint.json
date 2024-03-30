@@ -63,7 +63,8 @@
       "pages": [
         "documentation/get-started/introduction",
         "documentation/get-started/quickstart",
-        "documentation/get-started/deployment"
+        "documentation/get-started/deployment",
+        "documentation/get-started/demo-chat-rag-bigquery"
       ]
     },
     {

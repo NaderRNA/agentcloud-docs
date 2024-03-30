@@ -1,0 +1,182 @@
+---
+title: "Demo - RAG Google Bigquery"
+description: "Step by step guide to setup a conversational chat app to RAG a Google Big Query datasource (or any other data source)"
+---
+
+This is the full explainer, supplementing the Bigquery Demo Video below.
+The video does not show how the models, tasks, agent and app where setup to get it working, so this guide will go in depth.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/POLdnrjsy9c?si=367PvQnnNYpj3xSw&amp;start=115" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## 1. Setup Models and Credentials
+
+Go to the `/models` screen and add two models:
+
+<Frame>
+  <img src="/images/demo-models.png" />
+</Frame> <br></br>
+
+<AccordionGroup>
+  <Accordion icon="microchip" title="Add Embedding Model">
+  Add new model of type fastembed add select the `fast-bge-small-en`
+    <Note>This is a light weight model with a `384` embedding length and will run locally for free using your CPU/GPU. All splitting, chunking and embedding is done by our 🦀 Rust based Vector Proxy app, which is designed to embed documents at scale. If using CPU it will run multi-threaded or it will leverage a Metal/Cuda GPU if available while running. Run htop while embedding a document to see it in action!</Note>
+  </Accordion>
+
+  <Accordion icon="comments" title="Add LLM Model">
+  Add a new model of type Open AI and select `gpt-4-0125-preview`
+    <Note>For best performance first time we reccommend using Open AI. If using Open AI sign up to https://platform.openai.com/api-keys and generate an API Key. Copy and paste this into the Credenital screen within agentcloud. You can also connect to a local model via LM Studio or Ollama - if there any issues please raise on #help on Discord.</Note>
+  </Accordion>
+</AccordionGroup>
+
+## 2. Setup Datasource
+
+<Tip>If running locally via Docker, during this process we reccommend running `docker compose logs -f` in your terminal to follow along and catch any errors if they occur. For in Advanced debugging you can also open up apps like Qdrant or Airbyte to see progress as data passes through each system. Click Advanced Debugging for instructions on how to access these UIs.</Tip>
+<AccordionGroup>
+<Accordion icon="bug" title="Advanced Debugging">
+If you want to debug the applications running under the hood, you can access them via the following addresses:
+| App | Location | Authentication |
+| -------- | ------------------------------------- | --------------- |
+| Airbyte | http://localhost:8000 | username: airbyte password: password |
+| Qdrant | http://localhost:6333/dashboard#/collections | N/A |
+| Rabbit MQ | http://localhost:15672/ | username: guest password: guest |
+
+</Accordion>
+<Accordion icon="file-csv" title="Sample Elon Musk tweets dataset">
+You can get this dataset from [Github here](https://raw.githubusercontent.com/MartaCasdelg/Python-Projects/main/Twitter%20-Sentiment%20and%20text%20analysis%20of%20Elon%20Musk%20tweets/cleandata.csv). If you want to use Bigquery, you can upload the csv to Bigquery via their GUI.
+</Accordion>
+</AccordionGroup>
+
+Go to the `/datasources` screen, select New Connection and add a Bigquery data source:
+
+<Frame>
+  <img src="/images/demo-bigquery-datasource.png" />
+</Frame> <br></br>
+
+<AccordionGroup>
+  <Accordion icon="wrench" title="Provide a name and sync schedule">
+  Provide a name and sync schedule for the data source. Select `Manual` for now.
+    <Warning>For now, syncs configured via Agent Cloud, will sync all data from the source everytime. In airbyte terms this is called a `full refresh - overwrite`. We still need to enable other refresh options such as `Incremental - Append` or `Full Refresh - Append` in future versions, which will only sync new data via a provided cursor field (such as create date field). You can [read more about it here](https://docs.airbyte.com/using-airbyte/core-concepts/sync-modes/) </Warning>
+  </Accordion>
+
+  <Accordion icon="key" title="Provide Data Source Credentials">
+      <Tip>If you have many datasets in bigquery, make sure to complete the dataset field, otherwise Airbyte will search all datasets and take too long.</Tip>
+      <Warning> Make sure to copy and paste your keyfile json into a code editor and turn it into a single line before pasting it in to agent cloud. Failing to do so may result in an error.</Warning>
+  Provide the GCP project ID, a dataset name and copy and paste your `keyfile.json`.
+  </Accordion>
+
+  <Accordion icon="table" title="Select Table and Fields to Sync">
+  Select the table and fields to sync to Agent Cloud
+  <Tip>Selecting the top level checkbox will sync all fields.</Tip>
+  </Accordion>
+
+  <Accordion icon="microchip" title="Select field to Embed">
+  Select the Field you would like to embed and the model you want to embed with. You can use the `fast-bge-small-en` which we setup in step 1 or add it here if you haven't done so already.
+  </Accordion>
+  <Accordion icon="rotate" title="Sync will begin">
+  The sync will begin, you should see the process in your logs. You can open up Airbyte and Qdrant to see if the data has been synced and the collection has been created. (refer to Advanced Troubleshooting tab above)
+  </Accordion>
+
+</AccordionGroup>
+
+## 3. Setup A Tool
+
+Go to the `/tools` screen and create a new tool
+
+<Frame>
+  <img src="/images/demo-tools.png" />
+</Frame> <br></br>
+
+<AccordionGroup>
+<Accordion icon="wrench" title="Create a RAG tool">
+Create a new tool and Select the RAG tool type.
+</Accordion>
+<Accordion icon="text" title="Create a description">
+It's very important to create a description that adequatley describes your dataset. This is used by the LLM when deciding which tool to use.
+</Accordion>
+<Accordion icon="table" title="Add datasource to the tool">
+<Tip>It's very important to create a description that adequatley describes your dataset. This is used by the LLM when deciding which tool to use.</Tip>
+Create a description.
+</Accordion>
+</AccordionGroup>
+
+## 4. Setup an Agent
+
+Go to the `/agents` screen and create a new Agent
+
+<Frame>
+  <img src="/images/demo-agent.png" />
+</Frame> <br></br>
+
+<AccordionGroup>
+<Accordion icon="flag" title="Provide a Role, Goal and Backstory">
+You can copy and paste the following prompts
+<Tabs>
+  <Tab title="👤️ Role">
+  ```
+  You are an AI Assistant.
+  ```
+  </Tab>
+  <Tab title="🎯️ Goal">
+    ```
+    Have a back and forth conversation with the User.
+    ```
+  </Tab>
+  <Tab title="📖 Backstory">
+     ```
+     You are Agent Cloud Assistant, a useful assistant designed to answer questions provided by the user.
+     ```
+  </Tab>
+</Tabs>
+</Accordion>
+<Accordion icon="comments" title="Select the model">
+Provide the LLM model that was created in step 1 `gpt-4-0125-preview` and optionally add it as the Function Calling model.
+</Accordion>
+<Accordion icon="wrench" title="Select the tool">
+Select the RAG tool that you created earlier. You can provide multiple tools if you have multiple data sources.
+</Accordion>
+</AccordionGroup>
+
+## 5. Setup a Task
+
+Go to the `/tasks` screen and create a new task with the following task description:
+
+```
+Have a back and forth conversation with the user.
+Be clear in your answers always.
+If you don't know the answer say "I do not know."
+```
+
+Set the Preferred Agent as the Conversational Agent you just created.
+
+## 6. Create an App
+
+Go to the `/apps` screen and create a new App
+
+<AccordionGroup>
+<Accordion icon="people-arrows" title="Select Conversational App Type">
+Use the conversational App type.
+<Note>By default this adds a human input tool to the agent which will enable the chat experience to require input on every question.</Note>
+</Accordion>
+<Accordion icon="robot" title="Select the Agent">
+Select the Conversational Agent you just created.
+</Accordion>
+<Accordion icon="clipboard-list" title="Select the Task">
+Select the Conversational Task you created earlier.
+<Info>In future versions we will remove this config for conversational app types and will use defaulted/built in tasks to simplify setup</Info>
+</Accordion>
+<Accordion icon="arrow-down-1-9" title="Select Sequential Process">
+Select the Sequential process type.
+<Info>In future versions we will remove this config for conversational app types and will use defaulted/built in tasks to simplify setup</Info>
+</Accordion>
+<Accordion icon="play" title="Run the App">
+Save the App and Run it. Ask a question based on the dataset.
+</Accordion>
+</AccordionGroup>
+
+## 7. Have a chat!
+
+<Frame>
+  <img src="/images/demo-chat.png" />
+</Frame> <br></br>
+
+<Tip>If you want to make sure the agent always uses the tool, you can update the agent prompt and tell it, ALWAYS use the .... tool. Otherwise if you want to build an agent with a bit more autonomy to decide on multiple tools, you can keep the config light and let it infer which tool is required. Writing things like. For example in our example we wrote _According to Elon..._ which helped guide the LLM to the correct tool. This comes down to the overall intelligence of the model you're using.</Tip>
