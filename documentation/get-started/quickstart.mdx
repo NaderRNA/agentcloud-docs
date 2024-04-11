@@ -22,10 +22,11 @@ Learn how to get Agent Cloud running locally via Docker.
   </Accordion>
 
   <Accordion icon="rectangle-terminal" title="Run install.sh in terminal">
-    <Warning>
-    For now there is a reliance on GCP for Bucket storage to store files for RAG. Make sure you have your GCP Project ID ready and you have downloaded a service account keyfile.json with a with ```Storage Admin``` role to your machine [(instructions here).](https://cloud.google.com/iam/docs/keys-create-delete)
-    We will add AWS S3 and Local Disk storage in future releases so that we can remove the dependancy on GCP on install.
-    </Warning>
+    <Info>
+    There previously was a reliance on GCP for bucket storage. 
+    This has been removed and is now optional.
+    Files can now be accessed from Local Disk.
+    </Info>
 
     Follow the steps below to get started:
     Once you are in the directory of the repo for Mac & Linux users run:
@@ -43,7 +44,6 @@ Learn how to get Agent Cloud running locally via Docker.
         --service-account-json PATH      Specify the file path of your GCP service account json.
         --gcs-bucket-name NAME           Specify the GCS bucket name to use.
         --gcs-bucket-location LOCATION   Specify the GCS bucket location.
-        --openai-api-key KEY             Specify your OpenAI API key.
         -h, --help                       Display this help message.
     ```
 
