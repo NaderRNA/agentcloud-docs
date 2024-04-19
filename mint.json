@@ -17,8 +17,8 @@
   },
   "topbarLinks": [
     {
-      "name": "Sales",
-      "url": "https://agentcloud.dev/contact"
+      "name": "AgentCloud",
+      "url": "https://www.agentcloud.dev"
     }
   ],
   "topbarCtaButton": {
@@ -27,34 +27,8 @@
   },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
-    },
-    {
       "name": "Integrations",
       "url": "https://agentcloud.dev/integrations"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Product page",
-      "icon": "house",
-      "url": "https://agentcloud.dev"
-    },
-    {
-      "name": "Join Community",
-      "icon": "discord",
-      "url": "https://discord.com/invite/ZNSSttKqqq"
-    },
-    {
-      "name": "Github",
-      "icon": "github",
-      "url": "https://github.com/rnadigital/agentcloud"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://agentcloud.dev/blog"
     }
   ],
   "navigation": [
@@ -65,18 +39,6 @@
         "documentation/get-started/quickstart",
         "documentation/get-started/deployment",
         "documentation/get-started/demo-chat-rag-bigquery"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
       ]
     }
   ],
