@@ -1,0 +1,97 @@
+---
+title: "Local Dev with CLI"
+description: "How to use Agent Cloud on your local development machine."
+---
+
+You can use Agent Cloud locally on your machine to build your projects and this is the simplest way to get Agent Cloud up and running. It only takes a few minutes.
+## Setup via Docker
+
+Learn how to get Agent Cloud running locally via Docker.
+
+<AccordionGroup>
+    <Accordion icon="github" title="Clone the repository locally">
+        Open your terminal and clone the repo to your a local folder using the command below.
+        Make sure to ```cd``` into that directory.
+
+        ```git clone https://github.com/rnadigital/agentcloud.git```
+
+    </Accordion>
+
+    <Accordion icon="docker" title="Run Docker Desktop">
+        If you don't have docker desktop you can
+        [download it here](https://www.docker.com/products/docker-desktop/)
+    </Accordion>
+
+    <Accordion icon="rectangle-terminal" title="Run install.sh in terminal">
+        <Info>
+            There previously was a reliance on GCP for bucket storage.
+            This has been removed and is now optional.
+            Files can now be accessed from Local Disk.
+        </Info>
+
+        Follow the steps below to get started:
+        Once you are in the directory of the repo for Mac & Linux users run:
+        ```
+        chmod +x install.sh && ./install.sh
+        ```
+
+        The script will prompt for some details, or you can pass them as command line arguments:
+
+        ```
+        ~$ ./install.sh --help
+        Usage: ./install.sh [options]
+        Options:
+        --project-id ID                  Specify the GCP project ID.
+        --service-account-json PATH      Specify the file path of your GCP service account json.
+        --gcs-bucket-name NAME           Specify the GCS bucket name to use.
+        --gcs-bucket-location LOCATION   Specify the GCS bucket location.
+        -h, --help                       Display this help message.
+        ```
+
+        Here is a sample you can use to fill in the blanks
+        ```
+        ./install.sh --project-id [INSERT PROJECT ID HERE] --service-account-json [GENERATE A SERVICE ACCOUNT IN GCP AND INSERT LOCAL PATH TO KEYFILE JSON PATH] --gcs-bucket-name [INSERT A GCP BUCKET NAME] --gcs-bucket-location [INSERT A GCP LOCATION E.G. US-CENTRAL1] --openai-api-key [INSERT KEY SK-.......]
+        ```
+
+    </Accordion>
+    <Accordion icon="desktop" title="Go to localhost:3000">
+        Once all the Docker containers are running, enter your browser and go to http://localhost:3000.
+        You will see the following page where you can enter your sign in details.
+        ![Sign Up](/images/signup-page.png)
+
+        After signup you will be redirected to a sign in page where you can enter the same credentials you just used to sign up to enter the platform.
+    </Accordion>
+</AccordionGroup>
+
+### ⚠️ System Requirements
+
+To ensure optimal performance and stability when running AgentCloud, please ensure that your system meets the following requirements:
+
+**Memory (RAM):**
+1. Minimum of 16GB RAM is recommended for optimal performance. However, it's essential to allocate sufficient memory based on your specific usage.
+2. Actual memory usage may vary depending on factors such as dataset size and project complexity.
+3. During testing, typical memory usage ranges from 8GB to 10GB, including the operating system and other concurrently running programs within Docker.
+
+**Recommended RAM If Running Embeddings Locally:**
+- 🚀 Minimum of (16-32 GB) for optimal performance.
+- ❌ Avoid using 8 GB.
+- 💡 Consider 32 GB for excellent performance.
+
+**Disk Space:**
+- Minimum of 20 GB of free disk space.
+
+**Docker Resource Allocation:**
+- It's crucial to allocate sufficient resources to Docker itself, especially if running AgentCloud within Docker containers.
+
+<Info>
+    Please note that the actual resource requirements may vary depending on the specific usage and workload of your AgentCloud deployment.
+</Info>
+
+### Managed version
+
+We're currently building a waitlist for the cloud edition if you're interested in a managed version [let us know here](https://www.agentcloud.dev/join-cloud-waitlist)
+
+### Troubleshooting
+
+If you are stuck and need some help, don't hesitate to reach out on the #help channel on discord.
+You can [join our Discord here](https://discord.com/invite/ZNSSttKqqq)

@@ -1,51 +1,64 @@
 ---
-title: Welcome to Agent Cloud Docs
+title: Introduction
 description: "Learn how to get up and running with AgentCloud through guides, tutorials and platform resources."
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/light.svg"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.svg"
-  alt="Hero Dark"
-/>
-
 ## What is Agent Cloud?
 
-Agent Cloud enables companies to host their own AI App platform. (imagine a self hosted GPT builder platform with extra goodies!)
+Agent Cloud enables companies to host their own AI App platform. (imagine a self hosted GPT builder platform with extra goodies)
 
-There are two types of apps companies can build and deploy to their employees:
-| App Type | Description |
-| -------- | ------------------------------------- |
-| Conversational Chat Apps | These are similar to Open AI GPTs enabling you to build single agent chat apps except they can use any LLM, can access a library of tools as well as retrieve knowledge from hundreds of data sources. |
-| Process Apps | These enable you to automate processes by allocating goals and tasks for agents to complete. |
+There are two types of apps you can build and deploy to your employees.
+<CardGroup cols={2}>
+<Card title="Conversational Chat Apps" icon="link" iconType="duotone" color="#ca8b04">
+    These are similar to Open AI GPTs enabling you to build single agent chat apps except they can use any LLM, can access a library of tools as well as retrieve knowledge from hundreds of data sources.
+</Card>
+
+<Card title="Process Apps" icon="link" iconType="duotone" color="#ca8b04">
+    These enable you to automate processes by allocating goals and tasks for agents to complete.
+</Card>
+</CardGroup>
 
 ## App Type Use Cases
 
-Agent Cloud offers flexibility in app types, allowing for various use cases across industries:
+Agent Cloud offers flexibility in app types, allowing for various use cases across industries.
 
-1. **Customer Support**: Deploy conversational chat apps to handle customer inquiries and support tickets efficiently.
+<Accordion title="Customer Support">
+    Deploy conversational chat apps to handle customer inquiries and support tickets efficiently.
+</Accordion>
 
-2. **Internal Knowledge Base**: Create process apps to automate internal workflows, such as employee onboarding or document approval processes.
+<Accordion title="Internal Knowledge Base">
+    Create process apps to automate internal workflows, such as employee onboarding or document approval processes.
+</Accordion>
 
-3. **Data Analysis**: Utilize conversational chat apps to analyze and query data from multiple sources, empowering teams to make data-driven decisions.
+<Accordion title="Data Analysis">
+    Utilize conversational chat apps to analyze and query data from multiple sources, empowering teams to make data-driven decisions.
+</Accordion>
 
-4. **Fully Local Deployment**: Deploy Agent Cloud entirely on-premises or within a private cloud environment to ensure maximum control over data privacy and sovereignty. This deployment option is ideal for organizations with strict regulatory requirements or sensitive data handling policies.
+<Accordion title="Fully Local Deployment">
+    Deploy Agent Cloud entirely on-premises or within a private cloud environment to ensure maximum control over data privacy and sovereignty. This deployment option is ideal for organizations with strict regulatory requirements or sensitive data handling policies.
+</Accordion>
 
-5. **Education and Training**: Create interactive learning experiences using conversational chat apps powered by Agent Cloud. Educators can leverage AI to deliver personalized tutoring, simulate real-world scenarios, and facilitate collaborative learning environments.
+<Accordion title="Education and Training">
+    Create interactive learning experiences using conversational chat apps powered by Agent Cloud. Educators can leverage AI to deliver personalized tutoring, simulate real-world scenarios, and facilitate collaborative learning environments.
+</Accordion>
 
-6. **Financial Services**: Implement AI-driven solutions in the financial services sector to enhance customer service, automate routine tasks, and mitigate risks. Agent Cloud can power chatbots for banking inquiries, fraud detection algorithms, and personalized financial advisory services, improving operational efficiency and customer satisfaction.
+<Accordion title="Financial Services">
+    Implement AI-driven solutions in the financial services sector to enhance customer service, automate routine tasks, and mitigate risks. Agent Cloud can power chatbots for banking inquiries, fraud detection algorithms, and personalized financial advisory services, improving operational efficiency and customer satisfaction.
+</Accordion>
 
-7. **Healthcare Solutions**: Develop AI-powered healthcare applications to streamline patient care, medical diagnostics, and administrative processes. Agent Cloud can support virtual healthcare assistants, medical chatbots, and remote patient monitoring systems, improving access to healthcare services and optimizing workflows for healthcare providers.
+<Accordion title="Healthcare Solutions">
+    Develop AI-powered healthcare applications to streamline patient care, medical diagnostics, and administrative processes. Agent Cloud can support virtual healthcare assistants, medical chatbots, and remote patient monitoring systems, improving access to healthcare services and optimizing workflows for healthcare providers.
+</Accordion>
 
-### High level concepts in the app:
-<img style={{height: "400px"}} src="/images/concepts1.svg" />
 
-## Infrastructure that powers these chat apps
+### App Ecosystem Architecture Overview
+
+<Frame caption="Organizational and Functional Map">
+    <img src="/images/concepts1.svg" />
+</Frame>
+
+
+## Building Blocks of Our Chat Ecosystem
 
 In order to build an end to end scalable platform that empowers companies to deploy fully private LLM chat apps for their employees,
 the application must be self hostable and able to use open source embeddings and LLMs.
@@ -56,12 +69,20 @@ This includes:
 
 1. RAG as a Service which comes which enables you to sync and embed data from hundreds of data sources with a built in vector DB.
    To accomplish this we have abrstacted away both Airbyte (ELT) and Qdrant (Vector DB)
-   ![End to End RAG-a-a-S](/images/our-stack.jpg)
+<Frame>
+    <img src="/images/our-stack.jpg" />
+</Frame>
+
 2. Multi agent engine which enables you to create tasks and assign them to a group of agents.
    To accomplish this we have abrstacted a langchain based multi agent runtime called crewai.
-   ![Augmented Human/AI teams](/images/cs_agent1.png)
 
-![Augmented Human/AI tasks](/images/cs_agent2.png)
+<Frame>
+    <img src="/images/cs_agent1.png" />
+</Frame>
+
+<Frame>
+    <img src="/images/cs_agent2.png" />
+</Frame>
 
 ### Imagine having your own Open AI GPT builder platform
 
@@ -74,7 +95,10 @@ Except with 4 key differences:
 
 ### Managed version
 
-We're currently building a waitlist for the cloud edition if you're interested in a managed version [let us know here](https://www.agentcloud.dev/join-cloud-waitlist)
+<Info>
+    We're currently building a waitlist for the cloud edition if you're interested in a managed version [let us know here](https://www.agentcloud.dev/join-cloud-waitlist)
+</Info>
+
 
 ### Stay Connected
 

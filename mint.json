@@ -19,6 +19,10 @@
     {
       "name": "Home Page",
       "url": "https://www.agentcloud.dev"
+    },
+    {
+      "name": "Github",
+      "url": "https://github.com/rnadigital/agentcloud"
     }
   ],
   "topbarCtaButton": {
@@ -37,8 +41,14 @@
       "pages": [
         "documentation/get-started/introduction",
         "documentation/get-started/quickstart",
-        "documentation/get-started/deployment",
         "documentation/get-started/demo-chat-rag-bigquery"
+      ]
+    },
+    {
+      "group": "Installation",
+      "pages": [
+        "documentation/Installation/local",
+        "documentation/Installation/deployment"
       ]
     }
   ],
