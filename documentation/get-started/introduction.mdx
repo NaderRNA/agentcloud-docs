@@ -10,7 +10,7 @@ Agent Cloud enables companies to host their own AI App platform. (imagine a self
 There are two types of apps you can build and deploy to your employees.
 <CardGroup cols={2}>
 
-<Card title="Conversational Chat Apps" icon="link" iconType="duotone" color="#ca8b04">
+<Card title="Conversational Chat Apps" icon="link" iconType="duotone" color="#ca8b04" href="/demo-chat-rag-bigquery">
     These are similar to Open AI GPTs enabling you to build single agent chat apps except they can use any LLM, can access a library of tools as well as retrieve knowledge from hundreds of data sources.
 </Card>
 
@@ -51,14 +51,11 @@ Agent Cloud offers flexibility in app types, allowing for various use cases acro
     Develop AI-powered healthcare applications to streamline patient care, medical diagnostics, and administrative processes. Agent Cloud can support virtual healthcare assistants, medical chatbots, and remote patient monitoring systems, improving access to healthcare services and optimizing workflows for healthcare providers.
 </Accordion>
 
-
 ### App Ecosystem Architecture Overview
 
 <Frame caption="Organizational and Functional Map">
-    <img src="/images/concepts1.svg" alt="Diagram of the functional structure of the app showing connections between teams, users, permissions, and system components in Agent Cloud"/>
+    <img src="/images/functional-map.png" alt="Diagram of the functional structure of the app showing connections between teams, users, permissions, and system components in Agent Cloud"/>
 </Frame>
-
-
 
 ## Building Blocks of Our Chat Ecosystem
 
@@ -72,18 +69,18 @@ This includes:
 1. RAG as a Service which comes which enables you to sync and embed data from hundreds of data sources with a built in vector DB.
    To accomplish this we have abrstacted away both Airbyte (ELT) and Qdrant (Vector DB)
 <Frame>
-    <img src="/images/our-stack.jpg" alt="End to End RAG-a-a-S by Agent Cloud" />
+    <img src="/images/end-to-end-RAG-a-a-S.png" alt="End to End RAG-a-a-S by Agent Cloud" />
 </Frame>
 
 2. Multi agent engine which enables you to create tasks and assign them to a group of agents.
    To accomplish this we have abrstacted a langchain based multi agent runtime called crewai.
 
-<Frame>
-    <img src="/images/cs_agent1.png" alt="Augmented Human/AI teams"/>
+<Frame caption="Augmented Human/AI teams">
+    <img src="/images/ai-teams.png" alt="Augmented Human/AI teams"/>
 </Frame>
 
-<Frame>
-    <img src="/images/cs_agent2.png" alt="Augmented Human/AI tasks"/>
+<Frame caption="Augmented Human/AI tasks">
+    <img src="/images/ai-tasks.png" alt="Augmented Human/AI tasks"/>
 </Frame>
 
 ### Imagine having your own Open AI GPT builder platform
