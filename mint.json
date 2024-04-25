@@ -35,6 +35,12 @@
       "url": "https://agentcloud.dev/integrations"
     }
   ],
+  "primaryTab": {
+    "name": "Documentation"
+  },
+  "redirects": [
+  {"source": "/demo-chat-rag-bigquery","destination": "/get-started/demo-chat-rag-bigquery"}
+],
   "navigation": [
     {
       "group": "Get Started",
