@@ -33,21 +33,24 @@
     {
       "name": "Integrations",
       "url": "https://agentcloud.dev/integrations"
+    },
+    {
+      "name": "Blog",
+      "url": "https://www.agentcloud.dev/blog"
     }
   ],
   "primaryTab": {
     "name": "Documentation"
   },
   "redirects": [
-  {"source": "/demo-chat-rag-bigquery","destination": "/get-started/demo-chat-rag-bigquery"}
+  {"source": "/demo-chat-rag-bigquery","destination": "/documentation/guides/demo-chat-rag-bigquery"}
 ],
   "navigation": [
     {
       "group": "Get Started",
       "pages": [
         "documentation/get-started/introduction",
-        "documentation/get-started/quickstart",
-        "documentation/get-started/demo-chat-rag-bigquery"
+        "documentation/get-started/quickstart"
       ]
     },
     {
@@ -55,6 +58,15 @@
       "pages": [
         "documentation/Installation/local",
         "documentation/Installation/deployment"
+      ]
+    },
+    {
+      "group": "Guides & Tutorials",
+      "pages": [
+        {
+          "group": "RAG Examples",
+          "pages": ["documentation/guides/demo-chat-rag-bigquery"]
+        }
       ]
     }
   ],
