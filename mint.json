@@ -68,6 +68,12 @@
           "pages": ["documentation/guides/demo-chat-rag-bigquery"]
         }
       ]
+    },
+    {
+      "group": "Community",
+      "pages": [
+        "documentation/community/getting-support"
+      ]
     }
   ],
   "footerSocials": {
