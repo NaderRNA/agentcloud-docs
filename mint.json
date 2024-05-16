@@ -70,6 +70,12 @@
       ]
     },
     {
+      "group": "Contribute",
+      "pages": [
+        "documentation/contribute/contribute"
+      ]
+    },
+    {
       "group": "Community",
       "pages": [
         "documentation/community/getting-support"
