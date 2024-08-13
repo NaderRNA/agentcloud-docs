@@ -26,8 +26,8 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Join Cloud Waitlist",
-    "url": "https://www.agentcloud.dev/join-cloud-waitlist"
+    "name": "Sign Up to Cloud",
+    "url": "https://app.agentcloud.dev/register"
   },
   "tabs": [
     {
