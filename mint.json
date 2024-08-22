@@ -63,6 +63,7 @@
     {
       "group": "Guides & Tutorials",
       "pages": [
+        "documentation/guides/structure-output",
         {
           "group": "RAG Examples",
           "pages": ["documentation/guides/demo-chat-rag-bigquery"]
