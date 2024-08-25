@@ -6,13 +6,6 @@ icon: "youtube"
 description: "Step by step guide to setup a conversational chat app to RAG a Google Big Query datasource (or any other data source)"
 ---
 
-<Note>
-    This is the full explainer, supplementing the Bigquery Demo Video below.
-    This guide will show how to setup models, credentials, tasks, agents and apps to get the RAG chat app working.
-</Note>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/POLdnrjsy9c?si=367PvQnnNYpj3xSw&amp;start=115" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 ## 1. Setup Models and Credentials
 
 Go to the `/models` screen and add two models:
@@ -23,12 +16,11 @@ Go to the `/models` screen and add two models:
 
 <AccordionGroup>
   <Accordion icon="microchip" title="Add Embedding Model">
-  Add new model of type fastembed add select the `fast-bge-small-en`
-    <Note>This is a light weight model with a `384` embedding length and will run locally for free using your CPU/GPU. All splitting, chunking and embedding is done by our 🦀 Rust based Vector Proxy app, which is designed to embed documents at scale. If using CPU it will run multi-threaded or it will leverage a Metal/Cuda GPU if available while running. Run htop while embedding a document to see it in action!</Note>
+  Add new model of type fastembed add select the `text-embedding-3-small`
   </Accordion>
 
   <Accordion icon="comments" title="Add LLM Model">
-  Add a new model of type Open AI and select `gpt-4-0125-preview`
+  Add a new model of type Open AI and select `gpt-4o-mini`
     <Note>For best performance first time we reccommend using Open AI. If using Open AI sign up to https://platform.openai.com/api-keys and generate an API Key. Copy and paste this into the Credenital screen within agentcloud. You can also connect to a local model via LM Studio or Ollama - if there any issues please raise on #help on Discord.</Note>
   </Accordion>
 </AccordionGroup>
@@ -79,7 +71,7 @@ Go to the `/datasources` screen, select New Connection and add a Bigquery data s
   </Accordion>
 
   <Accordion icon="microchip" title="Select field to Embed">
-  Select the Field you would like to embed and the model you want to embed with. You can use the `fast-bge-small-en` which we setup in step 1 or add it here if you haven't done so already.
+  Select the Field you would like to embed and the model you want to embed with. You can use the `text-embedding-3-small` which we setup in step 1 or add it here if you haven't done so already.
   </Accordion>
   <Accordion icon="rotate" title="Sync will begin">
   The sync will begin, you should see the process in your logs. You can open up Airbyte and Qdrant to see if the data has been synced and the collection has been created. (refer to Advanced Troubleshooting tab above)
@@ -87,28 +79,9 @@ Go to the `/datasources` screen, select New Connection and add a Bigquery data s
 
 </AccordionGroup>
 
-## 3. Setup A Tool
 
-Go to the `/tools` screen and create a new tool
 
-<Frame>
-  <img src="/images/demo-tools.png" alt="How to Create a RAG Tool in Agent Cloud"/>
-</Frame> <br></br>
-
-<AccordionGroup>
-<Accordion icon="wrench" title="Create a RAG tool">
-Create a new tool and Select the RAG tool type.
-</Accordion>
-<Accordion icon="text" title="Create a description">
-It's very important to create a description that adequatley describes your dataset. This is used by the LLM when deciding which tool to use.
-</Accordion>
-<Accordion icon="table" title="Add datasource to the tool">
-<Tip>It's very important to create a description that adequatley describes your dataset. This is used by the LLM when deciding which tool to use.</Tip>
-Create a description.
-</Accordion>
-</AccordionGroup>
-
-## 4. Setup an Agent
+## 3. Setup an Agent
 
 Go to the `/agents` screen and create a new Agent
 
@@ -138,28 +111,16 @@ You can copy and paste the following prompts
 </Tabs>
 </Accordion>
 <Accordion icon="comments" title="Select the model">
-Provide the LLM model that was created in step 1 `gpt-4-0125-preview` and optionally add it as the Function Calling model.
+Provide the LLM model that was created in step 1 `gpt-4o-mini` and optionally add it as the Function Calling model.
 </Accordion>
-<Accordion icon="wrench" title="Select the tool">
+<Accordion icon="wrench" title="Select the datasource">
 Select the RAG tool that you created earlier. You can provide multiple tools if you have multiple data sources.
 </Accordion>
 </AccordionGroup>
 
-## 5. Setup a Task
+## 4. Create a Chat App
 
-Go to the `/tasks` screen and create a new task with the following task description:
-
-```
-Have a back and forth conversation with the user.
-Be clear in your answers always.
-If you don't know the answer say "I do not know."
-```
-
-Set the Preferred Agent as the Conversational Agent you just created.
-
-## 6. Create an App
-
-Go to the `/apps` screen and create a new App
+Go to the `/apps` screen and create a new Chat App
 
 <AccordionGroup>
 <Accordion icon="people-arrows" title="Select Conversational App Type">
@@ -169,20 +130,12 @@ Use the conversational App type.
 <Accordion icon="robot" title="Select the Agent">
 Select the Conversational Agent you just created.
 </Accordion>
-<Accordion icon="clipboard-list" title="Select the Task">
-Select the Conversational Task you created earlier.
-<Info>In future versions we will remove this config for conversational app types and will use defaulted/built in tasks to simplify setup</Info>
-</Accordion>
-<Accordion icon="arrow-down-1-9" title="Select Sequential Process">
-Select the Sequential process type.
-<Info>In future versions we will remove this config for conversational app types and will use defaulted/built in tasks to simplify setup</Info>
-</Accordion>
 <Accordion icon="play" title="Run the App">
 Save the App and Run it. Ask a question based on the dataset.
 </Accordion>
 </AccordionGroup>
 
-## 7. Have a chat!
+## 5. Have a chat!
 
 <Frame>
   <img src="/images/demo-chat.png" alt="Chat Interface at Agent Cloud"/>
