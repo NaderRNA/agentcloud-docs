@@ -1,0 +1,119 @@
+---
+title: "Structured Output Schema Rules"
+description: "How to create schema for structured output of process application tasks"
+---
+
+This document outlines the rules for creating a JSON schema object that will determine the AI's JSON output. The schema defines the structure and constraints of the JSON data that the AI will generate, ensuring that the output adheres to specific requirements.
+
+## Main Structure
+
+The main schema is an object that contains properties, specifically a property named `schema`.
+
+### Properties of `schema`
+
+- **Type**: Must be an object.
+- **Additional Properties**: Can be one of the following types:
+
+### Allowed Types for Additional Properties
+
+1. **Object Type**
+
+   - Must have:
+     - `type`: Set to `"object"`
+     - `schema`: An object that can have additional properties defined recursively.
+   - **Required**: `type`, `schema`
+
+2. **Array Type**
+
+   - Must have:
+     - `type`: Set to `"array"`
+     - `items`: Must reference additional properties defined in the schema.
+   - **Required**: `type`, `items`
+
+3. **Enum Type**
+
+   - Must have:
+     - `type`: Set to `"enum"`
+     - `enum`: An array of strings representing possible values.
+   - **Required**: `type`
+
+4. **Null Type**
+
+   - Must have:
+     - `type`: Set to `"null"`
+   - **Required**: `type`
+
+5. **String Type**
+
+   - Must have:
+     - `type`: Set to `"string"`
+   - **Required**: `type`
+
+6. **Number Type**
+   - Must have:
+     - `type`: Set to `"number"`
+   - **Required**: `type`
+
+## Example of a JSON Schema
+
+Here is an example that showcases all properites
+
+```
+{
+	schema: {
+		name: {
+			type: 'string'
+		},
+		age: {
+			type: 'number'
+		},
+		address: {
+			type: 'object',
+			schema: {
+				street: {
+					type: 'string'
+				},
+				city: {
+					type: 'string'
+				},
+				state: {
+					type: 'string'
+				}
+			}
+		},
+		clubs: {
+			type: 'array',
+			items: {
+				type: 'string'
+			}
+		},
+		ageRange: {
+			type: 'enum',
+			enum: ['0-10', '11-20', '21-30']
+		},
+		hobbies: {
+			type: 'object',
+			schema: {
+				sports: {
+					type: 'array',
+					items: {
+						type: 'string'
+					}
+				},
+				boardGames: {
+					type: 'object',
+					schema: {
+						minPlayers: {
+							type: 'number'
+						},
+						name: {
+							type: 'string'
+						}
+					}
+				}
+			}
+		}
+	}
+};
+
+```
